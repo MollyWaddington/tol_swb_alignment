@@ -46,12 +46,18 @@ grep '^>' cds.chr.fa | head
 
 
 mapping CDS to SWB (ref.sam):
+
 *should be the alignments of the cds to TOL. because the cds came from TOL, the mappings should be good.*
+
 grep -vc '^@' ref.chr.sam
+
 *tells you how many alignment records exist*
+
 awk '!/^@/ && $3!="*" {n++} END {print "mapped:", n}' ref.chr.sam
 *number of mapped records. should be close to previous value*
+
 awk '!/^@/ && $3!="*" {print $3}' ref.chr.sam | sort | uniq -c | sort -nr | head -20
+
 *mappings per chromosome*
 
 
