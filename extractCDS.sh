@@ -24,7 +24,7 @@ anchorwave gff2seq -i ${ANNOTATION} -r \
 ${TOL} -o cds.fa
 
 #Mapping reference CDS to reference genome
-#default p 0.8 N5, these settings are more permissive
+#default p 0.8 N5, these settings are more permissive to start
 minimap2 -x splice -a -t 10 -k 12 -p 0.4 -N 20 \
 ${TOL} cds.fa > ref.sam
 
