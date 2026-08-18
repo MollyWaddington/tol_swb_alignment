@@ -6,8 +6,8 @@
 #SBATCH --cpus-per-task=8
 #SBATCH -p defq #partition selection
 #SBATCH --time=48:00:00
-#SBATCH --mail-type=ALL          # Type of email notification: BEGIN,END,FAIL,A$
-#SBATCH --mail-user=waddingm@email.sc.edu  #Email where notifications will be sent
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=waddingm@email.sc.edu
 #SBATCH --mem=24000
 
 source /home/apps/anaconda/3.12/etc/profile.d/conda.sh
