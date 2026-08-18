@@ -20,14 +20,18 @@ I also had to make new files containing *only* the  chromosome information, beca
 Here, I use TOL as the reference and SWB as the query, though I think both ways would work. The literature suggests using the genome with the highest quality annotations and most complete/contiguous assembly as the reference.
 
 1) extract reference CDS and lift over reference and query genome
-script: extractCDS.sh 
-This script extracts the reference CDS (coding DNA sequence) from a genome annotation, maps those CDS beck to the reference and to a query genome with a splice-aware aligner.
+    
+    script: extractCDS.sh 
+    
+    This script extracts the reference CDS (coding DNA sequence) from a genome annotation, maps those CDS beck to the reference and to a query genome with a splice-aware aligner.
 
 CDS are the "anchors". Anchorwave reads the reference genome and the GFF3 annotation to pull out reference full-length coding sequences. It maps and lifts over the start and end positions of the CDS coordinates onto the query genome. The algorithm uses the matched CDS blocks to identify collinear anchor regions (conserved matching segments). Intervals between and within anchors are aligned to builf the final alignment blocks. 
 
 2) alignment
-script:sq align.sh
-this script uses the genoali function to align the genomes
+    
+    script: align.sh
+    
+    this script uses the genoali function to align the genomes
 
 In anchorwave, proali and genoAli are distinct functions for aligning sequences. genoAli is designed for closely related accessions or species with minimal structural rearrangements, while proali is used for complex variations (translocations, chromosome fusions, and whole genome duplications) Because I am aligning two *M.guttatus* genomes, I chose to use genoAli, but for future projects proali might be more appropriate.
 
