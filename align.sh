@@ -13,7 +13,7 @@
 source /home/apps/anaconda/3.12/etc/profile.d/conda.sh
 conda activate /home/waddingm/.conda/envs/anchorwave_env
 
-cd /work/wadding/tol_swb_align
+cd /work/waddingm/tol_swb_align
 
 SWB=/work/waddingm/tol_swb_align/SWB.chr.fa
 TOL=/work/waddingm/tol_swb_align/TOL.chr.fa
