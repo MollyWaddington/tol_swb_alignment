@@ -10,11 +10,22 @@
 #SBATCH --mail-user=waddingm@email.sc.edu  #Email where notifications will be sent
 #SBATCH --mem=24000
 
-SWB=/work/waddingm/MimgutStandDraft_7/Mguttatusvar_SWB_988_v1.1.fa
-TOL=/work/waddingm/v5.0/assembly/MguttatusTOL_551_v5.0.fa
-ANNOTATION=/work/waddingm/v5.0/annotation/MguttatusTOL_551_v5.0.gene.gff3
+source /home/apps/anaconda/3.12/etc/profile.d/conda.sh
+conda activate /home/waddingm/.conda/envs/anchorwave_env
 
-anchorwave genoAli -i ${ANNOTATION} -as cds.fa -r \
-${TOL} -a cds.sam -ar ref.sam -s Zm-Mo17- \
-${SWB} -n anchors.anchors -o tol_swb.maf -f \
-tol_swb.f.maf -IV
+cd /work/wadding/tol_swb_align
+
+SWB=/work/waddingm/tol_swb_align/SWB.chr.fa
+TOL=/work/waddingm/tol_swb_align/TOL.chr.fa
+ANNOTATION=/work/waddingm/tol_swb_align/TOL.chr.gff3
+
+anchorwave genoAli \
+  -i "${ANNOTATION}" \
+  -as cds.chr.fa \
+  -r "${TOL}" \
+  -a cds.chr.sam \
+  -ar ref.chr.sam \
+  -s "${SWB}" \
+  -n anchors.chr \
+  -o tol_swb.chr.maf \
+  -f tol_swb.chr.f.maf
