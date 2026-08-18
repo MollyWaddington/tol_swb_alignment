@@ -38,10 +38,15 @@ In anchorwave, proali and genoAli are distinct functions for aligning sequences.
 3) checking CDS output
 
 CDS file:
+
 grep -c '^>' cds.chr.fa
+
 head -2 cds.chr.fa
+
 *should be greater than 0*
+
 grep '^>' cds.chr.fa | head
+
 *should match gene ids in annotation*
 
 
@@ -54,6 +59,7 @@ grep -vc '^@' ref.chr.sam
 *tells you how many alignment records exist*
 
 awk '!/^@/ && $3!="*" {n++} END {print "mapped:", n}' ref.chr.sam
+
 *number of mapped records. should be close to previous value*
 
 awk '!/^@/ && $3!="*" {print $3}' ref.chr.sam | sort | uniq -c | sort -nr | head -20
@@ -62,6 +68,7 @@ awk '!/^@/ && $3!="*" {print $3}' ref.chr.sam | sort | uniq -c | sort -nr | head
 
 
 Mapping cds to SWB (cds.chr.sam)
+
 grep -vc '^@' cds.chr.sam
 
 awk '!/^@/ && $3!="*" {n++} END {print "mapped:", n}' cds.chr.sam
@@ -71,14 +78,17 @@ awk '!/^@/ && $3!="*" {print $3}' cds.chr.sam | sort | uniq -c | sort -nr | head
 *hopefully, these numbers are similar to the previous numbers with TOL*
 
 checking all chr are present:
+
 awk '!/^@/ && $3!="*" {print $3}' cds.chr.sam | sort -u
 
 
 4) checking alignment output
 *check output exists*
+
 ls -lh anchors.chr tol_swb.chr.maf tol_swb.chr.f.maf
 
 *chromosome, start, aligned length, and chromosole length*
+
 grep -E '^[[:space:]]*s[[:space:]]' tol_swb.chr.maf |
 awk '{print $1, $2, $3, $4, $5, $6}' |
 head -30
